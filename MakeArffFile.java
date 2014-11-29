@@ -4,20 +4,18 @@
 
 package MakeArffFile;
 
-import java.*;
+//import java.*;
 import java.io.*;
 import java.util.*;
-import java.math.*;
-import java.lang.*;
+//import java.math.*;
+//import java.lang.*;
 
 public class MakeArffFile {
 	
 
 	public static void main(String[] args) {
 		int bin1 = 0, bin2 = 0, bin3 = 0, bin4 = 0, bin5 = 0, bin6 = 0, bin7 = 0, bin8 = 0;
-		String pictureClass;
-		int red, green, blue;
-		
+		int red, green, blue;		
 		String[] colors;
 		
 		//open file for reading
@@ -34,9 +32,8 @@ public class MakeArffFile {
 			bin7 = 0;
 			bin8 = 0;
 			
-			//String fileName = file;
-			
 			System.out.println(file);
+			
 		   BufferedReader reader = null;
 			try {
 				//read file
@@ -53,9 +50,6 @@ public class MakeArffFile {
 			    
 
 			    	System.out.println("red:  " + red + ";  green:  " + green + ";  blue:  " + blue);	
-			    	double e = 2;
-			    	double f = 7;
-			    	System.out.println(Math.pow(e,f));
 			    	
 			    	if ((red >= 0) && (red < 128) && (green >= 0) && (green < 128) && (blue >= 0) && (blue < 128)){
 			    		bin1++;	    					    		
@@ -85,18 +79,17 @@ public class MakeArffFile {
 			    	else {
 			    		System.out.println("FAILED BIN ASSIGNMENT");
 			  		  	System.out.println("\n\nPress num to continue..");
-						Scanner sc = new Scanner(System.in);
-						int i = sc.nextInt();
-						    	
+						Scanner sc1 = new Scanner(System.in);
+						int i1 = sc1.nextInt();
+						System.out.println(i1);
+						sc1.close();
 			    	}
 			    	
 			    	
 			    	System.out.println("bin1:  " + bin1 + "\nbin2:  "+ bin2 + "\nbin3:  " + bin3 + "\nbin4:  " + bin4 + 
-			    			"\nbin5:  " + bin5 + "\nbin6:  " + bin6 + "\nbin7:  " + bin7 + "\nbin8:  " + bin8);
-			    	
-		
-			    	
+			    			"\nbin5:  " + bin5 + "\nbin6:  " + bin6 + "\nbin7:  " + bin7 + "\nbin8:  " + bin8); 		
 			    }
+			    
 			} catch (FileNotFoundException e) {
 			    e.printStackTrace();
 			} catch (IOException e) {
@@ -109,23 +102,7 @@ public class MakeArffFile {
 			    } catch (IOException e) {
 			    }
 			}
-	
-			
-			
-			
-			//take first 3 and assign to r,g, and b
-			
-			//analyze to see what bin it falls in
-			
-			//add 1 to appropriate bin
-		
-		
-		
-		
-		
 		}
-		
-		
+		sc.close();
 	}
-
 }
