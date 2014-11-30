@@ -19,7 +19,7 @@ public class MakeArffFile {
 		String[] colors;
 		
 		//open file for reading
-		File directory= new File("C:\\Users\\bt5\\Documents\\1-School and cert\\CSC 573 Data Mining\\Final Project\\project_images\\project images\\ztextfilesonly\\airplane\\training");
+		File directory= new File("C:\\Users\\bt5\\Documents\\1-School and cert\\CSC 573 Data Mining\\Final Project\\project_images\\project images\\ztextfilesonly\\sunflower\\training");
 		for (File file : directory.listFiles())
 		{
 			System.out.println("\n opening new file \n");
@@ -95,9 +95,9 @@ public class MakeArffFile {
 			    BufferedWriter out = null;
 			    try  
 			    {
-			        FileWriter fstream = new FileWriter("bin8info.txt", true); //true tells to append data.
+			        FileWriter fstream = new FileWriter("bin8info7.txt", true); //true tells to append data.
 			        out = new BufferedWriter(fstream);
-			        out.write(bin1 + "," + bin2 + "," + bin3 + "," + bin4 + "," + bin5 + "," + bin6 + "," + bin7 + "," + bin8 + "\n");
+			        out.write(bin1 + "," + bin2 + "," + bin3 + "," + bin4 + "," + bin5 + "," + bin6 + "," + bin7 + "," + bin8 + "," + "sunflower" + "\n");
 			        
 			    }
 			    catch (IOException e)

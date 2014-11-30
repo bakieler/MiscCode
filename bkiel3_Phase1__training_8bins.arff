@@ -1,0 +1,48 @@
+% Beth Kieler
+% bkiel3
+% 11/27/2014
+%
+% Title: Image Training Data
+% Num of bins:  8
+%
+% Description:
+% This is one training file for image classification to categorize images into one of seven 
+% categories: Piano, Kangaroo, Strawberry, Sunflower, Airplane, Face and Leopard.  The
+% data set consists of 320 training images
+
+% Number of Attributes: 3 numeric, predictive attributes and the class
+% 
+% Attributes:
+%    1. bin1 
+%    2. bin2
+%    3. bin3
+%	 4. bin4
+%	 5. bin5
+%	 6. bin6
+%	 7. bin7
+%	 8. bin8
+%    9. Class - Piano, Kangaroo, Strawberry, Sunflower, Airplane, Face or Leopard
+%    
+% Summary:
+%    Piano 50   
+%    Kangeroo 50   
+%    Strawberry 20   
+%    Sunflower 50   
+%    Airplane 50   
+%    Face 50   
+%    Leopard 50   
+%
+
+@RELATION images
+
+@ATTRIBUTE bin1 numeric
+@ATTRIBUTE bin2 numeric
+@ATTRIBUTE bin3 numeric
+@ATTRIBUTE bin4 numeric
+@ATTRIBUTE bin5 numeric
+@ATTRIBUTE bin6 numeric
+@ATTRIBUTE bin7 numeric
+@ATTRIBUTE bin8 numeric
+@ATTRIBUTE class 	{Piano,Kangaroo,Strawberry,Sunflower,Airplane,Face,Leopard}
+
+@DATA

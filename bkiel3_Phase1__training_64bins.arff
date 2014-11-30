@@ -1,0 +1,97 @@
+% Beth Kieler
+% bkiel3
+% 11/27/2014
+%
+% Title: Image Training Data
+% Num of bins:  64
+%
+% Description:
+% This is one training file for image classification to categorize images into one of seven 
+% categories: Piano, Kangaroo, Strawberry, Sunflower, Airplane, Face and Leopard.  The
+% data set consists of 320 training images
+
+% Number of Attributes: 64 numeric, predictive attributes and the class
+% 
+% Attributes:
+%    bin1 - bin64
+%    Class - Piano, Kangaroo, Strawberry, Sunflower, Airplane, Face or Leopard
+%    
+% Summary:
+%    Piano 50   
+%    Kangeroo 50   
+%    Strawberry 20   
+%    Sunflower 50   
+%    Airplane 50   
+%    Face 50   
+%    Leopard 50   
+%
+
+@RELATION images
+
+@ATTRIBUTE bin1 numeric
+@ATTRIBUTE bin2 numeric
+@ATTRIBUTE bin3 numeric
+@ATTRIBUTE bin4 numeric
+@ATTRIBUTE bin5 numeric
+@ATTRIBUTE bin6 numeric
+@ATTRIBUTE bin7 numeric
+@ATTRIBUTE bin8 numeric
+@ATTRIBUTE bin9 numeric
+@ATTRIBUTE bin10 numeric
+@ATTRIBUTE bin11 numeric
+@ATTRIBUTE bin12 numeric
+@ATTRIBUTE bin13 numeric
+@ATTRIBUTE bin14 numeric
+@ATTRIBUTE bin15 numeric
+@ATTRIBUTE bin16 numeric
+@ATTRIBUTE bin17 numeric
+@ATTRIBUTE bin18 numeric
+@ATTRIBUTE bin19 numeric
+@ATTRIBUTE bin20 numeric
+@ATTRIBUTE bin21 numeric
+@ATTRIBUTE bin22 numeric
+@ATTRIBUTE bin23 numeric
+@ATTRIBUTE bin24 numeric
+@ATTRIBUTE bin25 numeric
+@ATTRIBUTE bin26 numeric
+@ATTRIBUTE bin27 numeric
+@ATTRIBUTE bin28 numeric
+@ATTRIBUTE bin29 numeric
+@ATTRIBUTE bin30 numeric
+@ATTRIBUTE bin31 numeric
+@ATTRIBUTE bin32 numeric
+@ATTRIBUTE bin33 numeric
+@ATTRIBUTE bin34 numeric
+@ATTRIBUTE bin35 numeric
+@ATTRIBUTE bin36 numeric
+@ATTRIBUTE bin37 numeric
+@ATTRIBUTE bin38 numeric
+@ATTRIBUTE bin39 numeric
+@ATTRIBUTE bin40 numeric
+@ATTRIBUTE bin41 numeric
+@ATTRIBUTE bin42 numeric
+@ATTRIBUTE bin43 numeric
+@ATTRIBUTE bin44 numeric
+@ATTRIBUTE bin45 numeric
+@ATTRIBUTE bin46 numeric
+@ATTRIBUTE bin47 numeric
+@ATTRIBUTE bin48 numeric
+@ATTRIBUTE bin49 numeric
+@ATTRIBUTE bin50 numeric
+@ATTRIBUTE bin51 numeric
+@ATTRIBUTE bin52 numeric
+@ATTRIBUTE bin53 numeric
+@ATTRIBUTE bin54 numeric
+@ATTRIBUTE bin55 numeric
+@ATTRIBUTE bin56 numeric
+@ATTRIBUTE bin57 numeric
+@ATTRIBUTE bin58 numeric
+@ATTRIBUTE bin59 numeric
+@ATTRIBUTE bin60 numeric
+@ATTRIBUTE bin61 numeric
+@ATTRIBUTE bin62 numeric
+@ATTRIBUTE bin63 numeric
+@ATTRIBUTE bin64 numeric
+@ATTRIBUTE class 	{Piano,Kangaroo,Strawberry,Sunflower,Airplane,Face,Leopard}
+
+@DATA
