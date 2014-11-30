@@ -15,7 +15,7 @@ public class MakeArffFile64bins {
 		String[] colors;
 		
 		//open file for reading
-		File directory= new File("C:\\Users\\bt5\\Documents\\1-School and cert\\CSC 573 Data Mining\\Final Project\\project_images\\project images\\ztextfilesonly\\airplane\\training");
+		File directory= new File("C:\\Users\\bt5\\Documents\\1-School and cert\\CSC 573 Data Mining\\Final Project\\project_images\\project images\\ztextfilesonly\\sunflower\\training");
 		for (File file : directory.listFiles())
 		{
 			System.out.println("\n opening new file \n");
@@ -38,10 +38,7 @@ public class MakeArffFile64bins {
 			    	red = Integer.parseInt(colors[0]);
 			    	blue = Integer.parseInt(colors[1]);
 			    	green = Integer.parseInt(colors[2]);
-			    
-
-			    	System.out.println("red:  " + red + ";  green:  " + green + ";  blue:  " + blue);	
-			    	
+			    			    	
 			    	if ((red >= 0) && (red < 64)){
 			    		if ((green >= 0) && (green < 64)){
 			    			if ((blue >= 0) && (blue < 64)){
@@ -409,12 +406,12 @@ public class MakeArffFile64bins {
 			    BufferedWriter out = null;
 			    try  
 			    {
-			        FileWriter fstream = new FileWriter("bin64info1.txt", true); //true tells to append data.
+			        FileWriter fstream = new FileWriter("bin64info7.txt", true); //true tells to append data.
 			        out = new BufferedWriter(fstream);
 			        for(int i = 0; i < 64; i++){
 			        	out.write(bin[i] + ",");
 			        }
-			        out.write("airplane" + "\n");
+			        out.write("sunflower" + "\n");
 			        
 			    }
 			    catch (IOException e)
