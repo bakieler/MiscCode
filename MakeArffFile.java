@@ -90,6 +90,32 @@ public class MakeArffFile {
 			    			"\nbin5:  " + bin5 + "\nbin6:  " + bin6 + "\nbin7:  " + bin7 + "\nbin8:  " + bin8); 		
 			    }
 			    
+			    //write out to file here
+			    
+			    BufferedWriter out = null;
+			    try  
+			    {
+			        FileWriter fstream = new FileWriter("bin8info.txt", true); //true tells to append data.
+			        out = new BufferedWriter(fstream);
+			        out.write(bin1 + "," + bin2 + "," + bin3 + "," + bin4 + "," + bin5 + "," + bin6 + "," + bin7 + "," + bin8 + "\n");
+			        
+			    }
+			    catch (IOException e)
+			    {
+			        System.err.println("Error: " + e.getMessage());
+			    }
+			    finally
+			    {
+			        if(out != null) {
+			            out.close();
+			        }
+			    }
+			    
+			    
+			    
+			    
+			    
+			    
 			} catch (FileNotFoundException e) {
 			    e.printStackTrace();
 			} catch (IOException e) {
@@ -103,6 +129,5 @@ public class MakeArffFile {
 			    }
 			}
 		}
-		sc.close();
 	}
 }
