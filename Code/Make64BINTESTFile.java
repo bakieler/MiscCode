@@ -409,7 +409,12 @@ public class Make64BINTESTFile {
 			        FileWriter fstream = new FileWriter("bin64TESTinfo_sunflower.txt", true); //true tells to append data.
 			        out = new BufferedWriter(fstream);
 			        for(int i = 0; i < 64; i++){
-			        	out.write(bin[i] + ",");
+			        	if(i < 63){
+			        		out.write(bin[i] + ",");
+			        	}
+			        	else{
+			        		out.write(bin[i] + "\n");
+			        	}
 			        }
 			        
 			    }
@@ -437,5 +442,6 @@ public class Make64BINTESTFile {
 			    }
 			}
 		}
+		System.out.println("\n\n\n FINISHED \n\n\n");
 	}
 }

@@ -2244,7 +2244,12 @@ public class Make512binTESTFile {
 			        FileWriter fstream = new FileWriter("bin512TESTinfo_sunflower.txt", true); //true tells to append data.
 			        out = new BufferedWriter(fstream);
 			        for(int i = 0; i < 512; i++){
-			        	out.write(bin[i] + ",");
+			        	if(i < 511){
+			        		out.write(bin[i] + ",");
+			        	}
+			        	else{
+			        		out.write(bin[i] + "\n");
+			        	}
 			        }
 			        
 			    }
@@ -2257,12 +2262,7 @@ public class Make512binTESTFile {
 			        if(out != null) {
 			            out.close();
 			        }
-			    }
-			    
-			    
-			    
-			    
-			    
+			    }   
 			    
 			} catch (FileNotFoundException e) {
 			    e.printStackTrace();
@@ -2277,6 +2277,6 @@ public class Make512binTESTFile {
 			    }
 			}
 		}
-		System.out.println("\n\n\n \n\n\n FINISHED \n\n\n");
+		System.out.println("\n\n\n FINISHED \n\n\n");
 	}
 }
