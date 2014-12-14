@@ -5,26 +5,27 @@
 package MakeArffFile;
 
 import java.io.*;
+import java.math.BigDecimal;
 import java.util.*;
 
 public class Make64BINTESTFile {
 	public static void main(String[] args) {
 		
-		int[] bin = new int[64];
+		float[] bin = new float[64];
 		int red, green, blue;		
 		String[] colors;
+		String[] bin_nox = new String[64]; //this is the normalized bin results without exponents
+		BigDecimal num;
+		int total_pixels;
 		
 		//open file for reading
 		File directory= new File("C:\\Users\\bt5\\Documents\\1-School and cert\\CSC 573 Data Mining\\Final Project\\project_images\\project images\\ztextfilesonly\\sunflower\\test");
 		for (File file : directory.listFiles())
 		{
-			//System.out.println("\n opening new file \n");
 			for (int i = 0; i < 64; i++){
 				bin[i] = 0;
 			}
-			
-			//System.out.println(file);
-			
+			total_pixels = 0;			
 		   BufferedReader reader = null;
 			try {
 				//read file
@@ -399,10 +400,17 @@ public class Make64BINTESTFile {
 			    			}
 			    		}// end green between 192 and 256
 			    	} // end red between 192 and 256 		
+			    	total_pixels++;
 			    }
+			    // Normalize
+			    for (int i = 0; i < 64; i++){
+					bin[i] = bin[i]/total_pixels;
+					num = new BigDecimal(bin[i]);
+					bin_nox[i] = num.toPlainString();
+					
+				}
 			    
-			    //write out to file here
-			    
+			    //write out to file 
 			    BufferedWriter out = null;
 			    try  
 			    {
@@ -410,10 +418,10 @@ public class Make64BINTESTFile {
 			        out = new BufferedWriter(fstream);
 			        for(int i = 0; i < 64; i++){
 			        	if(i < 63){
-			        		out.write(bin[i] + ",");
+			        		out.write(bin_nox[i] + ",");
 			        	}
 			        	else{
-			        		out.write(bin[i] + "\n");
+			        		out.write(bin_nox[i] + "\n");
 			        	}
 			        }
 			        

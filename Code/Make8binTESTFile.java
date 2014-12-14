@@ -6,15 +6,17 @@ package MakeArffFile;
 
 
 import java.io.*;
+import java.math.BigDecimal;
 import java.util.*;
 
 public class Make8binTESTFile {
 	
 
 	public static void main(String[] args) {
-		int bin1 = 0, bin2 = 0, bin3 = 0, bin4 = 0, bin5 = 0, bin6 = 0, bin7 = 0, bin8 = 0;
+		float bin1 = 0, bin2 = 0, bin3 = 0, bin4 = 0, bin5 = 0, bin6 = 0, bin7 = 0, bin8 = 0;
 		int red, green, blue;		
 		String[] colors;
+		int total_pixels;
 		
 		//open file for reading
 		File directory= new File("C:\\Users\\bt5\\Documents\\1-School and cert\\CSC 573 Data Mining\\Final Project\\project_images\\project images\\ztextfilesonly\\sunflower\\test");
@@ -29,6 +31,7 @@ public class Make8binTESTFile {
 			bin6 = 0;
 			bin7 = 0;
 			bin8 = 0;
+			total_pixels = 0;
 			
 			//System.out.println(file);
 			
@@ -82,20 +85,44 @@ public class Make8binTESTFile {
 						System.out.println(i1);
 						sc1.close();
 			    	}
-			    	
-			    	
-			    	//System.out.println("bin1:  " + bin1 + "\nbin2:  "+ bin2 + "\nbin3:  " + bin3 + "\nbin4:  " + bin4 + 
-			    	//		"\nbin5:  " + bin5 + "\nbin6:  " + bin6 + "\nbin7:  " + bin7 + "\nbin8:  " + bin8); 		
+			    	total_pixels++;			    	
 			    }
 			    
-			    //write out to file here
+			    //Normalize bin numbers	
+			   // System.out.println("Total_pixels = " + total_pixels);
+			    bin1 = bin1/total_pixels;
+			    bin2 = bin2/total_pixels;
+			    bin3 = bin3/total_pixels;
+			    bin4 = bin4/total_pixels;
+			    bin5 = bin5/total_pixels;
+			    bin6 = bin6/total_pixels;
+			    bin7 = bin7/total_pixels;
+			    bin8 = bin8/total_pixels;
 			    
+			    BigDecimal num = new BigDecimal(bin1);
+			    String Bin1NoExponents = num.toPlainString();
+			    num = new BigDecimal(bin2);
+			    String Bin2NoExponents = num.toPlainString();
+			    num = new BigDecimal(bin3);
+			    String Bin3NoExponents = num.toPlainString();
+			    num = new BigDecimal(bin4);
+			    String Bin4NoExponents = num.toPlainString();
+			    num = new BigDecimal(bin5);
+			    String Bin5NoExponents = num.toPlainString();
+			    num = new BigDecimal(bin6);
+			    String Bin6NoExponents = num.toPlainString();
+			    num = new BigDecimal(bin7);
+			    String Bin7NoExponents = num.toPlainString();
+			    num = new BigDecimal(bin8);
+			    String Bin8NoExponents = num.toPlainString();
+			    
+			    //write out to file here
 			    BufferedWriter out = null;
 			    try  
 			    {
 			        FileWriter fstream = new FileWriter("bin8TESTinfosunflower.txt", true); //true tells to append data.
 			        out = new BufferedWriter(fstream);
-			        out.write(bin1 + "," + bin2 + "," + bin3 + "," + bin4 + "," + bin5 + "," + bin6 + "," + bin7 + "," + bin8 + "\n");
+			        out.write(Bin1NoExponents + "," + Bin2NoExponents + "," + Bin3NoExponents + "," + Bin4NoExponents + "," + Bin5NoExponents + "," + Bin6NoExponents + "," + Bin7NoExponents + "," + Bin8NoExponents + "\n");
 			        
 			    }
 			    catch (IOException e)
@@ -122,5 +149,6 @@ public class Make8binTESTFile {
 			    }
 			}
 		}
+		System.out.println("\n\n\n \n\n\n FINISHED \n\n\n");
 	}
 }

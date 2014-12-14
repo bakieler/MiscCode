@@ -5,14 +5,18 @@
 package MakeArffFile;
 
 import java.io.*;
+import java.math.BigDecimal;
 import java.util.*;
 
 public class Make512binTESTFile {
 	public static void main(String[] args) {
 		
-		int[] bin = new int[512];
+		float[] bin = new float[512];
 		int red, green, blue;		
 		String[] colors;
+		String[] bin_nox = new String[512]; //this is the normalized bin results without exponents
+		BigDecimal num;
+		int total_pixels;
 		
 		//open file for reading
 		File directory= new File("C:\\Users\\bt5\\Documents\\1-School and cert\\CSC 573 Data Mining\\Final Project\\project_images\\project images\\ztextfilesonly\\sunflower\\test");
@@ -22,13 +26,10 @@ public class Make512binTESTFile {
 			for (int i = 0; i < 512; i++){
 				bin[i] = 0;
 			}
-			
-			//System.out.println(file);
-			
+			total_pixels = 0;
 		   BufferedReader reader = null;
 			try {
 				//read file
-			    
 				reader = new BufferedReader(new FileReader(file));
 			    String text = null;
 			    
@@ -2232,12 +2233,16 @@ public class Make512binTESTFile {
 			    			}
 			    		}// end green between 224 and 256
 			    	} //end red between 224 and 256
-
+			    	total_pixels++;
 			    	/*  END OF IF STATEMENTS */
 			    }
-			    
-			    //write out to file here
-			    
+			    // Normalize
+			    for (int i = 0; i < 512; i++){
+					bin[i] = bin[i]/total_pixels;
+					num = new BigDecimal(bin[i]);
+					bin_nox[i] = num.toPlainString();
+				} 
+			    //write out to file 
 			    BufferedWriter out = null;
 			    try  
 			    {
@@ -2245,10 +2250,10 @@ public class Make512binTESTFile {
 			        out = new BufferedWriter(fstream);
 			        for(int i = 0; i < 512; i++){
 			        	if(i < 511){
-			        		out.write(bin[i] + ",");
+			        		out.write(bin_nox[i] + ",");
 			        	}
 			        	else{
-			        		out.write(bin[i] + "\n");
+			        		out.write(bin_nox[i] + "\n");
 			        	}
 			        }
 			        
