@@ -4,33 +4,74 @@
 #
 
 import os
-from difflib import SequenceMatcher
+import hashlib
+from collections import defaultdict
 
 def get_folder_path():
-
     # This function will obtain the folder path.
-    valid_path = 1
 
-    while(valid_path):
+    while(True):
         print(f"Please provide the full path of the folder to read.")
-        folder_path = input("PATH:  ")
+        folder_path = input("PATH:  ").strip()
         if os.path.isdir(folder_path):
             print(f"The folder exists.")
+            return folder_path
         else:
-            print(f"The folder does not exist.")
-    print("end of folder_read")
-    return folder_path
+            print(f"The folder does not exist. Try again")
     ##### END get_folder_path() ######
 
-def folder_read(path):
+def folder_read(folder_path):
     # This function will read the contents of a folder.
-    print("in folder read")
+    all_files = []
+    for root, dirs, files in os.walk(folder_path):
+        for file in files:
+            full_path = os.path.join(root, file)
+            all_files.append(full_path)
+    return all_files
     ##### END folder_read() ######
 
-def duplicate_search():
+#creating a hash with typical chunk size
+def get_file_hash(filepath, chunk_size=8192):
+    hasher = hashlib.sha256() #initialize object with cryptographic hash function
+    try:
+        with open(filepath, 'rb') as f: #opens in binary read mode
+            while chunk := f.read(chunk_size):
+                hasher.update(chunk)
+    except Exception as e:
+        print(f"Error hashing file {filepath}: {e}")
+        return None
+    return hasher.hexdigest() #finalizes hash
+
+
+def duplicate_name(file_paths):
     # This function will check for duplicate names.
-    print("in duplicate search")
-    ##### END duplicate_search() ######
+    name_map = defaultdict(list)
+    for one_path in file_paths:
+        filename = os.path.basename(one_path)
+        name_map[filename].append(one_path)
+
+    duplicate_names = {} #dictionary of duplicates
+
+    for name, paths in name_map.items():
+        if len(paths) > 1:
+            duplicate_names[name] = paths
+
+    return duplicate_names
+    ##### END duplicate_name() ######
+
+def duplicate_content(file_paths):
+    content_map = defaultdict(list)
+    for one_path in file_paths:
+        file_hash = get_file_hash(one_path)
+        if file_hash:
+            content_map[file_hash].append(one_path)
+
+    dup_file_content = {}
+    for hash_value, path_list in content_map.items():
+        if len(path_list) >1:
+            dup_file_content[hash_value] = path_list
+    return dup_file_content
+### END duplicate_content()
 
 
 
@@ -39,7 +80,7 @@ def duplicate_search():
 
 ##### START PROGRAM ######
 if __name__ == "__main__":
-    allowed_choice = ("123")
+    allowed_choice = ("1239")
     end_program = 1
     while(end_program):
         print(f" \nChoose which program example to run by entering a number 1 - 3.")
@@ -60,36 +101,19 @@ if __name__ == "__main__":
         match choice[0]:
             case "1":
                 path = get_folder_path()
-                #folder_information = folder_read(path)
-                #duplicates = duplicate_search()
-                #print(duplicates)
+                folder_information = folder_read(path)
+                name_duplicates = duplicate_name(folder_information)
+                content_duplicates = duplicate_content(folder_information)
+                print("Here are the names of duplicate names.")
+                print (name_duplicates)
+                print("Here are the items that have duplicate content.")
+                print(content_duplicates)
             case "2":
                 print(f"You entered: {choice[0]}")
-            case _:  # The wildcard '_' acts as a default case
+            case "3":  # The wildcard '_' acts as a default case
                 print(f"You entered: {choice[0]}")
+            case "9":
+                print("quitting")
+                break
+
 ##### END PROGRAM ######
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
